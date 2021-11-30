@@ -4,7 +4,7 @@ const generateReportNumber = require('../../hooks/generate-report-number');
 
 module.exports = {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [],
     find: [],
     get: [],
     create: [generateReportNumber()],
