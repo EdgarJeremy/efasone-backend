@@ -20,6 +20,7 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   cities.associate = function (models) {
+    cities.hasMany(models.reports, { onDelete: 'cascade' });
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };

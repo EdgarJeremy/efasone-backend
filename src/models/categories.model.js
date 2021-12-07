@@ -21,6 +21,7 @@ module.exports = function (app) {
   // eslint-disable-next-line no-unused-vars
   categories.associate = function (models) {
     categories.belongsTo(models.departments, { onDelete: 'cascade' });
+    categories.hasMany(models.reports, { onDelete: 'cascade' });
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };

@@ -21,6 +21,7 @@ module.exports = function (app) {
   // eslint-disable-next-line no-unused-vars
   neighbors.associate = function (models) {
     neighbors.belongsTo(models.subdistricts);
+    neighbors.hasMany(models.reports, { onDelete: 'cascade' });
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };
