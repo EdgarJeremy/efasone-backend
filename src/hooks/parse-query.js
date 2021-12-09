@@ -24,7 +24,6 @@ module.exports = (options = {}) => {
 };
 
 function buildIncludes(m, models) {
-  console.log(m);
   if (m.model === 'users') {
     if (m.$select)
       if (m.$select.indexOf('password') !== -1)

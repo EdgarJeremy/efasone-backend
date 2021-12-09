@@ -81,6 +81,7 @@ module.exports = function (app) {
     reports.belongsTo(models.neighbors, { onDelete: 'cascade' });
 
     reports.belongsTo(models.categories, { onDelete: 'cascade' });
+    reports.belongsTo(models.departments, { onDelete: 'cascade', as: 'forwardedTo' });
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };

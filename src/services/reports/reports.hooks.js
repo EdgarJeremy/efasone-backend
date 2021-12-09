@@ -2,6 +2,8 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const generateReportNumber = require('../../hooks/generate-report-number');
 
+const forwardReport = require('../../hooks/forward-report');
+
 module.exports = {
   before: {
     all: [],
@@ -9,7 +11,7 @@ module.exports = {
     get: [],
     create: [generateReportNumber()],
     update: [],
-    patch: [],
+    patch: [forwardReport()],
     remove: []
   },
 

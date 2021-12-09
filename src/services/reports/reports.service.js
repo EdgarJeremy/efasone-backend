@@ -5,6 +5,7 @@ const hooks = require('./reports.hooks');
 
 module.exports = function (app) {
   const options = {
+    events: ['forwarded'],
     Model: createModel(app),
     paginate: app.get('paginate')
   };
