@@ -27,6 +27,10 @@ module.exports = function (app) {
     phone: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    isLeader: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
 
   }, {
