@@ -5,11 +5,7 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const categories = sequelizeClient.define('categories', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+  const departmentCategories = sequelizeClient.define('department_categories', {
   }, {
     hooks: {
       beforeCount(options) {
@@ -19,13 +15,12 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  categories.associate = function (models) {
-    // categories.belongsTo(models.departments, { onDelete: 'cascade' });
-    categories.belongsToMany(models.departments, { through: 'department_categories', onDelete: 'cascade' });
-    categories.hasMany(models.reports, { onDelete: 'cascade' });
+  departmentCategories.associate = function (models) {
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
+    departmentCategories.belongsTo(models.departments, { onDelete: 'cascade' });
+    departmentCategories.belongsTo(models.categories, { onDelete: 'cascade' });
   };
 
-  return categories;
+  return departmentCategories;
 };
