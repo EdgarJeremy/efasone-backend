@@ -7,8 +7,14 @@ module.exports = (options = {}) => {
     const report = context.data;
     const messaging = context.app.get('fcm');
     const category = await context.app.service('categories').get(report.categoryId);
-    const department = await context.app.service('departments').get(category.departmentId);
-    const condition = `'report-leader' in topics || 'report-${department.id}' in topics`;
+    const departments = await context.app.service('department-categories').find({
+      query: {
+        categoryId: category.id
+      }
+    });
+    const qr = departments.map((d) => `report-${d.id} in topics`).join(' || ');
+    console.log(departments, qr);
+    const condition = `'report-leader' in topics || ${qr}`;
     const message = {
       notification: {
         title: 'Aspirasi Masuk!',
