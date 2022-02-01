@@ -12,9 +12,9 @@ module.exports = (options = {}) => {
         categoryId: category.id
       }
     });
-    const qr = departments.data.map((d) => `report-${d.departmentId} in topics`).join(' || ');
-    console.log(qr);
+    const qr = departments.data.map((d) => `'report-${d.departmentId}' in topics`).join(' || ');
     const condition = `'report-leader' in topics || ${qr}`;
+    console.log(condition);
     const message = {
       notification: {
         title: 'Aspirasi Masuk!',
