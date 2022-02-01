@@ -12,8 +12,8 @@ module.exports = (options = {}) => {
         categoryId: category.id
       }
     });
-    const qr = departments.map((d) => `report-${d.id} in topics`).join(' || ');
-    console.log(departments, qr);
+    const qr = departments.data.map((d) => `report-${d.departmentId} in topics`).join(' || ');
+    console.log(qr);
     const condition = `'report-leader' in topics || ${qr}`;
     const message = {
       notification: {
